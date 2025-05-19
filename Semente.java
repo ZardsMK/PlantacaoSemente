@@ -5,6 +5,7 @@ public class Semente {
         private int qt_Convertida = 0;
         private int sobra_Convertida = 0;
         private int vl_Compra;
+        private int parametro;
     
     public Semente() {
         
