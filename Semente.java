@@ -1,4 +1,4 @@
-public class Semente {
+public class Semente Extends Parametro{
         private int qt_Pilula;
         private int es_Semente = 0;
         private int qt_Semente;
