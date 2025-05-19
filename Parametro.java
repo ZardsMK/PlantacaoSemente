@@ -1,21 +1,10 @@
 public class Parametro {
-    private int sementePilula;
-    
-    public Parametro() {
-        sementePilula = 0;
+    protected int parametro = 30000;
+
+    public Parametro(int parametro){
+        this.parametro = parametro;
     }
-    
-    public void atualizarParametro(int val) {
-        int calc = val/30000;
-        if(calc >= 1) {
-            sementePilula = sementePilula + calc;
-            System.out.print(calc + " semente(s) adicionada.");
-        } else {
-            System.out.print("Nenhuma semente adicionada.");
-        }
-    }
-    
-    public int pegarSemente() {
-        return sementePilula;
+    public void atualizarParametro(int novoParametro) {
+        parametro = novoParametro;
     }
 }

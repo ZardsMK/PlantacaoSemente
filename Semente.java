@@ -1,12 +1,14 @@
-public class Semente {
+public class Semente Extends Parametro{
         private int qt_Pilula;
         private int es_Semente = 0;
         private int qt_Semente;
         private int qt_Convertida = 0;
         private int sobra_Convertida = 0;
         private int vl_Compra;
+        private int parametro;
     
-    public Semente() {
+    public Semente(int parametro) {
+            super(parametro);
         
     }
     
@@ -40,8 +42,8 @@ public class Semente {
     public void adicionarPilula(int val) {
         
         int calc = sobra_Convertida + val;
-        int sementesConvertidas = calc / 30000;
-        sobra_Convertida = calc % 30000;
+        int sementesConvertidas = calc / parametro;
+        sobra_Convertida = calc % parametro;
         
         if(sementesConvertidas >= 1) {
             qt_Convertida += sementesConvertidas;
