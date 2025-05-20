@@ -27,12 +27,13 @@ public class Compra {
     
     public void pegarSemente(int qtd, Semente sem) {
         atualizarVenda();
-        atualizarEstoque();
+        atualizarEstoque(qtd, sem);
     }
     public void atualizarVenda() {
         
     }
-    public void atualizarEstoque() {
-        
+    public void atualizarEstoque(int qtd, Semente sem) {
+        // adicionarSemente(int qtd) es_Semente += qtd
+        sem.adicionarSemente(qtd);
     }
 }
