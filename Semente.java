@@ -1,48 +1,37 @@
-public class Semente Extends Parametro{
-        private int qt_Pilula;
-        private int es_Semente = 0;
-        private int qt_Semente;
-        private int qt_Convertida = 0;
+public class Semente extends Parametro {
         private int sobra_Convertida = 0;
-        private int vl_Compra;
-        private int parametro;
+        private int qt_Convertida = 0;
+        private int es_Semente = 0;
     
-    public Semente() {
-        
+    public void getStatus() {
+        System.out.println("Deve plantar :" + qt_Convertida +"\nEstoque de sementes: "+ es_Semente +"\nSobra de pilulas: "+ sobra_Convertida);
     }
     
-    // public void VerificarPilula() {
-        
-    // }
-    
-    // public void VerificarEstoque() {
-        
-    // }
-    
     public void plantarSemente(int val) {
-        if(qt_Convertida >= val) {
-            if(es_Semente >= val) {
-                System.out.println(val + "semente(s) plantada.");
-                qt_Convertida -= val;
-                es_Semente -= val;
-                System.out.println(qt_Convertida + "permissoes de semente restante.");
-                System.out.println(es_Semente + "semente(s) do estoque restante.");
-            } else {
-                System.out.println("Sementes do estoque insuficiente.");
-                System.out.println(es_Semente + "semente(s) do estoque restante.");
-            }
+        if(es_Semente >= val) {
+            es_Semente -= val;
+            qt_Convertida -= val;
+            System.out.println(val + "semente(s) plantada.");
+        } else if (es_Semente > 0){
+            
+            qt_Convertida -= es_Semente;
+            System.out.println("Plantadas apenas " + es_Semente + " semente(s).");
+            es_Semente = 0;
+        } else {
+            System.out.println("Sem sementes disponíveis para plantar.");
         }
-        else {
-            System.out.println("Permissao para plantar insuficiente.");
-            System.out.println(qt_Convertida + "permissoes de semente restante.");
-        }
+
+         System.out.println("Estoque atual de sementes: " + es_Semente);
+         System.out.println("Sementes ainda a plantar (débito): " + qt_Convertida);
     }
     
     public void adicionarPilula(int val) {
         
-        int calc = sobra_Convertida + val;
-        int sementesConvertidas = calc / 30000;
-        sobra_Convertida = calc % 30000;
+        int total = sobra_Convertida + val;
+        int parametro = getParametro();
+        
+        int sementesConvertidas = total / parametro;
+        sobra_Convertida = total % parametro;
         
         if(sementesConvertidas >= 1) {
             qt_Convertida += sementesConvertidas;
@@ -51,6 +40,10 @@ public class Semente Extends Parametro{
             System.out.println("Nenhuma permissao de semente adicionada.");
         }
         
-        System.out.println("Sobra atual de permissao: " + sobra_Convertida);
+        plantarSemente(sementesConvertidas);
     }
+    
+    public void adicionarSemente(int val) {
+        es_Semente += val;
+    } 
 }
