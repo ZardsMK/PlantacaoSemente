@@ -2,12 +2,11 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-	    // 30.000 pilulas - 1 arvore
+
 		Scanner scanner = new Scanner(System.in);
 		Semente s = new Semente();
 		Compra c = new Compra();
-
-		//Parametro p = new Parametro();
+		Historico h = new Historico();
 
         int opcao;
         
@@ -16,6 +15,8 @@ public class Main {
             System.out.println("2 - Plantar Semente");
             System.out.println("3 - Comprar Semente");
             System.out.println("4 - Gerar Relatorio");
+            System.out.println("5 - Mudar Parametro");
+            System.out.println("0 - Sair");
             opcao = scanner.nextInt(); 
             scanner.nextLine();
             
@@ -31,14 +32,24 @@ public class Main {
                 s.plantarSemente(scan);
             } else if (opcao == 3) {
                 System.out.print("Valor da sementes: ");
-                int scan = scanner.nextInt();
+                float scan = scanner.nextFloat();
                 scanner.nextLine();
                 System.out.print("Quantas sementes deseja comprar: ");
                 int scan2 = scanner.nextInt();
                 scanner.nextLine();
-                c.comprarSemente(scan, scan2, s);
+                c.comprarSemente(scan, scan2, s, h);
+                s.getStatus();
             } else if (opcao == 4) {
-                
+                System.out.println("Situação:");
+                s.getStatus();
+                System.out.println("Receitas:");
+                h.mostrarReceitas();
+                System.out.println("Vendas:");
+                h.mostrarVendas();
+            } else if (opcao == 5) {
+                System.out.print("Novo parametro de pilulas: ");
+                int scan = scanner.nextInt();
+                s.atualizarParametro(scan);
             } else if (opcao == 0) {
                 System.out.println("Tchau");
             } else {
