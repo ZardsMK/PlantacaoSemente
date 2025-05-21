@@ -1,7 +1,11 @@
 public class Parametro {
-    private int Pr_Semente = 30000;
+    private int pr_Semente = 30000;
+    
+    public int getParametro() {
+        return pr_Semente;
+    }
     
     public void atualizarParametro(int novoParametro) {
-        Pr_Semente = novoParametro;
+        this.pr_Semente = novoParametro;
     }
 }
